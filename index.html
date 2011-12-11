@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="js/jquerymobile/1.0/jquery.mobile.css" />
+	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+	<!-- This has to come before the jquery.mobile script because it triggers the mobileinit event -->
+	<script type="text/javascript" src="js/init.jquery.mobile.js"></script>
+	<script type="text/javascript" src="js/jquerymobile/1.0/jquery.mobile.js"></script>
+	<script type="text/javascript" src="js/underscore.js"></script>
+	<script type="text/javascript" src="js/backbone.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="firstPage">
+
+	<div data-role="header">
+		<h1>My Title</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Hello world</p>		
+		<a href="#page/secondPage">Go to the second page</a>		
+	</div>
+
+</div>
+
+
+<div data-role="page" id="secondPage">
+
+	<div data-role="header">
+		<h1>Second Page</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>This is the second page</p>
+		<a href="#page/firstPage/options/reverse/true/data/foo/bar/a/2">Back to first page</a>		
+		<!-- <a href="#page/firstPage/options/reverse/false/data/foo/bar/a/2">Back to first page</a>		 -->
+	</div>
+
+</div>
+
+</body>
+</html>
