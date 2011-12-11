@@ -1,0 +1,1 @@
+This is a simple example of integrating jQuery Mobile with Backbone.js.  This basically turns off all jQM listeners (link, hashes, etc) and replaces them with a Backbone router.
