@@ -4,15 +4,62 @@
 	<title>My Page</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="js/jquerymobile/1.0/jquery.mobile.css" />
+	<link rel="stylesheet" href="css/todos.css" />
 	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="js/json2.js"></script>
 	<!-- This has to come before the jquery.mobile script because it triggers the mobileinit event -->
 	<script type="text/javascript" src="js/init.jquery.mobile.js"></script>
 	<script type="text/javascript" src="js/jquerymobile/1.0/jquery.mobile.js"></script>
 	<script type="text/javascript" src="js/underscore.js"></script>
 	<script type="text/javascript" src="js/backbone.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/backbone-localstorage.js"></script>
+	<script type="text/javascript" src="js/todos.js"></script>
 </head> 
 <body> 
+
+<div data-role="page" id="todoapp">
+	<!-- Todo App Interface -->
+
+      <div class="content" data-role="content">
+
+		<div class="title">
+	        <h1>Todos</h1>
+	      </div>
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="What needs to be done?" type="text" />
+          <span><a class="save" href="javascript:void(0)" data-role="button" data-inline="true">Save</a></span>
+        </div>
+
+        <div id="todos">
+          <ul id="todo-list" data-role="listview"></ul>
+        </div>
+		<div id="info">
+			<ul id="instructions">
+		      <li>Double-click to edit a todo.</li>
+		      <li><a href="../../docs/todos.html">View the annotated source.</a></li>
+		    </ul>
+
+		    <div id="credits">
+		      Created by
+		      <br />
+		      <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>
+		    </div>
+		</div>
+      </div>
+	  <div id="todo-stats" data-role="footer" data-position="fixed"></div>
+</div>
+
+<div data-role="page" id="todo-detail" data-dom-cache="false">
+	<div data-role="header">
+		<a href="#" data-icon="arrow-l" class="back">Back</a>
+		<h1>TODO</h1>
+	</div>
+	<div class="content" data-role="content" data-theme="d">
+		<div id="todo-detail-content">
+		</div>
+	</div>
+</div>
 
 <div data-role="page" id="firstPage">
 
@@ -41,6 +88,55 @@
 	</div>
 
 </div>
+
+<!-- Templates -->
+
+<script type="text/template" id="item-template">
+  <a class="todo-detail" href="#">
+  <div class="todo <%= done ? 'done' : '' %>">
+    <div class="display">
+      <!-- <input class="check" type="checkbox" <%= done ? 'checked="checked"' : '' %> /> -->
+      <div class="todo-content"></div>
+      <span class="todo-destroy"></span>
+    </div>
+    <div class="edit">
+      <input class="todo-input" type="text" value="" />
+    </div>
+  </div>
+  </a>
+</script>
+
+<script type="text/template" id="stats-template">
+  <% if (total) { %>
+    <span class="todo-count">
+      <span class="number"><%= remaining %></span>
+      <span class="word"><%= remaining == 1 ? 'item' : 'items' %></span> left.
+    </span>
+  <% } %>
+  <% if (done) { %>
+    <span class="todo-clear">
+      <a href="#">
+        Clear <span class="number-done"><%= done %></span>
+        completed <span class="word-done"><%= done == 1 ? 'item' : 'items' %></span>
+      </a>
+    </span>
+  <% } %>
+</script>
+
+<script type="text/template" id="item-detail-template">
+	
+	<form>
+	    <div class="todo <%= done ? 'done' : '' %>">
+		  <input type="checkbox" name="done" id="done-item-<%= id %>" <%= done ? 'checked="checked"' : ''/>
+		  <label for="done-item-<%= id %>">Done?</label>
+	      <input class="todo-input" name="content" type="text" value="<%= content %>" />
+		  <a href="#" data-theme="e" data-role="button" class="save-detail">Save</a>
+	    </div>
+
+	</form>
+
+</script>
+
 
 </body>
 </html>
