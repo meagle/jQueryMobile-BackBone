@@ -18,39 +18,16 @@
 <body> 
 
 <div data-role="page" id="todoapp">
-	<!-- Todo App Interface -->
-
+	  <div class="header" data-role="header" data-position="fixed"></div>
       <div class="content" data-role="content">
-
-		<div class="title">
-	        <h1>Todos</h1>
-	      </div>
-
-        <div id="create-todo">
-          <input id="new-todo" placeholder="What needs to be done?" type="text" />
-          <span><a class="save" href="javascript:void(0)" data-role="button" data-inline="true">Save</a></span>
-        </div>
-
-        <div id="todos">
+        <!-- <div id="todos">
           <ul id="todo-list" data-role="listview"></ul>
-        </div>
-		<div id="info">
-			<ul id="instructions">
-		      <li>Double-click to edit a todo.</li>
-		      <li><a href="../../docs/todos.html">View the annotated source.</a></li>
-		    </ul>
-
-		    <div id="credits">
-		      Created by
-		      <br />
-		      <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>
-		    </div>
-		</div>
+        </div> -->
       </div>
 	  <div id="todo-stats" data-role="footer" data-position="fixed"></div>
 </div>
 
-<div data-role="page" id="todo-detail" data-dom-cache="false">
+<!-- <div data-role="page" id="todo-detail" data-dom-cache="false">
 	<div data-role="header">
 		<a href="#" data-icon="arrow-l" class="back">Back</a>
 		<h1>TODO</h1>
@@ -60,34 +37,8 @@
 		</div>
 	</div>
 </div>
+-->
 
-<div data-role="page" id="firstPage">
-
-	<div data-role="header">
-		<h1>My Title</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">	
-		<p>Hello world</p>		
-		<a href="#page/secondPage">Go to the second page</a>		
-	</div>
-
-</div>
-
-
-<div data-role="page" id="secondPage">
-
-	<div data-role="header">
-		<h1>Second Page</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">	
-		<p>This is the second page</p>
-		<a href="#page/firstPage/options/reverse/true/data/foo/bar/a/2">Back to first page</a>		
-		<!-- <a href="#page/firstPage/options/reverse/false/data/foo/bar/a/2">Back to first page</a>		 -->
-	</div>
-
-</div>
 
 <!-- Templates -->
 
@@ -127,7 +78,7 @@
 	
 	<form>
 	    <div class="todo <%= done ? 'done' : '' %>">
-		  <input type="checkbox" name="done" id="done-item-<%= id %>" <%= done ? 'checked="checked"' : ''/>
+		  <input type="checkbox" name="done" id="done-item-<%= id %>" <%= done ? 'checked="checked"' : ''%>/>
 		  <label for="done-item-<%= id %>">Done?</label>
 	      <input class="todo-input" name="content" type="text" value="<%= content %>" />
 		  <a href="#" data-theme="e" data-role="button" class="save-detail">Save</a>
